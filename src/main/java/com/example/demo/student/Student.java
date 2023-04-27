@@ -3,6 +3,8 @@ package com.example.demo.student;
 
 import jakarta.persistence.*;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -20,8 +22,12 @@ public class Student {
           generator = "student_sequence"
   )
   private long id;
+
+  @Column(name = "name", nullable = false)
+  @NotBlank(message = "Name is mandatory")
   private String name;
   private LocalDate dob;
+  @Email(message = "Email should be valid")
   private String email;
 
 
